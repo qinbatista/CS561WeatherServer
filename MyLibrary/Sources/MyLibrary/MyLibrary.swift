@@ -24,6 +24,21 @@ public class MyLibrary {
             return nil
         }
     }
+    public func GetStandardTemperature() async -> Int? {
+        // Check the simple case first: 3, 5 and 8 are automatically lucky.
+        do
+        {
+            print("GetStandardTemperature")
+            let thisService = WeatherServiceImpl()
+            thisService.myURL = .local
+            let temperature = try await thisService.getTemperature()
+            return temperature
+        }
+        catch
+        {
+            return nil
+        }
+    }
 }
 
 private extension Int {

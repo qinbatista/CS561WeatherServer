@@ -14,6 +14,7 @@ class MockWeatherService: WeatherService {
     func getTemperature() async throws -> Int {
         switch (shouldSucceed, shouldReturnTemperatureWithAnEight) {
         case (true, true):
+            
             return 38
 
         case (true, false):

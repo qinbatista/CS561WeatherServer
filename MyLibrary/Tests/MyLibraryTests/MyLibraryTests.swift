@@ -1,6 +1,5 @@
 import XCTest
 import MyLibrary
-
 final class MyLibraryTests: XCTestCase {
     func testIsLuckyBecauseWeAlreadyHaveLuckyNumber() async {
         // Given
@@ -68,5 +67,15 @@ final class MyLibraryTests: XCTestCase {
         // Then
         XCTAssertNil(isLuckyNumber)
     }
-
+    func testGetTemperature() async {
+        let mockWeatherService = MockWeatherService(
+            shouldSucceed: false,
+            shouldReturnTemperatureWithAnEight: false
+        )
+        let myLibrary = MyLibrary(weatherService: mockWeatherService)
+        // When
+        let temp = await myLibrary.GetStandardTemperature()
+        // Then
+        XCTAssertNotNil(temp)
+    }
 }
