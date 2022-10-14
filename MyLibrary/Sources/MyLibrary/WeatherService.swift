@@ -34,13 +34,16 @@ class WeatherServiceImpl: WeatherService
                     print("getTemperature await")
                     var temperature = weather.main.temp
                     var temp_min = weather.main.temp_min
-                    var tem_max = weather.main.temp_max
+                    var temp_max = weather.main.temp_max
                     temperature = temperature-273.15
-                    temp_min = temperature-273.15
-                    tem_max = temperature-273.15
+                    temp_min = temp_min-273.15
+                    temp_max = temp_max-273.15
+                    print(temperature)
+                    print(temp_min)
+                    print(temp_max)
                     let temperatureAsInteger = Int(temperature)
                     let tem_min_AsInteger = Int(temp_min)
-                    let tem_max_AsInteger = Int(tem_max)
+                    let tem_max_AsInteger = Int(temp_max)
                     if (temperatureAsInteger<tem_max_AsInteger && temperatureAsInteger>tem_min_AsInteger)
                     {
                         //temperature is normal
