@@ -1,5 +1,6 @@
 import XCTest
 import MyLibrary
+@testable import MyLibrary
 final class MyLibraryTests: XCTestCase {
     func testIsLuckyBecauseWeAlreadyHaveLuckyNumber() async {
         // Given
@@ -77,5 +78,26 @@ final class MyLibraryTests: XCTestCase {
         let temp = await myLibrary.GetStandardTemperature()
         // Then
         XCTAssertNotNil(temp)
+    }
+//    func testGetTemperatureFromWeatherServiceImpl() async {
+//        let thisService = WeatherServiceImpl()
+//        thisService.myURL = .local
+//        let temperature = try await thisService.getTemperature()
+////        return temperature
+//    }
+    func testGetTemperatureFromWeatherServiceImpl() async {
+        // Check the simple case first: 3, 5 and 8 are automatically lucky.
+        do
+        {
+            print("GetStandardTemperature")
+            let thisService = WeatherServiceImpl()
+            thisService.myURL = .local
+            let temperature = try await thisService.getTemperature()
+            XCTAssertNotNil(temperature)
+        }
+        catch
+        {
+            XCTAssert(false)
+        }
     }
 }
